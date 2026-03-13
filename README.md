@@ -23,7 +23,7 @@ Users walk out of conference rooms and leave their AirPlay or Miracast session c
 - **Call guardrail** — Takes no action while `SystemUnit.State.System` is `InCall`
 - **Suppression window** — After a user confirms presence, backs off for a configurable period
 - **Wireless-specific detection** — Subscribes to `Video.Input.AirPlay.Activity` and `Video.Input.Miracast.Status/Transport` to only act when wireless sharing is actually active
-- **Navigator targeting** — Can send prompts to a specific Room Navigator by PeripheralId
+- **Graceful reboot recovery** — Retries xAPI subscriptions for nodes that aren't available immediately after a device restart (v0.9+)
 - **MTR compatible** — Works on devices running Microsoft Teams Rooms mode
 
 ## Configuration
@@ -37,7 +37,6 @@ All settings are in the `SETTINGS` object at the top of the macro file:
 | `promptTimeoutSeconds` | `30` | How long to wait for a response before stopping the share |
 | `suppressAfterStayMinutes` | `15` | Cooldown after user confirms they're still present |
 | `emptyGraceSeconds` | `60` | How long to wait after room empties before prompting |
-| `navigatorPeripheralId` | `''` | Target a specific Navigator (empty = all displays) |
 
 ## Requirements
 
@@ -48,7 +47,7 @@ All settings are in the `SETTINGS` object at the top of the macro file:
 ## Installation
 
 ### Via Webex Control Hub
-Upload `AirplayMiracastDisconnectOnPresence-v-0-8.js` through **Devices > [device] > Macros** in Control Hub.
+Upload `AirplayMiracastDisconnectOnPresence-v-0-10.js` through **Devices > [device] > Macros** in Control Hub.
 
 ### Via xAPI
 ```
@@ -65,9 +64,15 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
 
 | Version | Date | Author |
 |---------|------|--------|
+| 0.10 | 2026-03-13 | Doug Schaefer (with Claude Code) |
+| 0.9 | 2026-03-13 | Doug Schaefer (with Claude Code) |
 | 0.8 | 2026-03-12 | Doug Schaefer (with Claude Code) |
 | 0.7 | 2026-03-12 | Logan Evans (with GitHub Copilot) |
 
 ## License
 
 MIT
+
+## Testing & Validation
+
+All releases committed to this repository have been fully tested in either a production client environment or the ASEI integration lab before publication. See [TESTING.md](TESTING.md) for device matrix, success criteria, and testing methodology.
