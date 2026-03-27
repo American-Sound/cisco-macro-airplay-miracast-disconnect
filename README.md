@@ -18,13 +18,15 @@ Users walk out of conference rooms and leave their AirPlay or Miracast session c
 
 ## Features
 
-- **Dual occupancy signals** — Use PeoplePresence, PeopleCount, or both ("Either" mode) to detect empty rooms
-- **User prompt before disconnect** — OSD alert with Room Navigator support; never silently kills a share while someone is presenting
-- **Call guardrail** — Takes no action while `SystemUnit.State.System` is `InCall`
-- **Suppression window** — After a user confirms presence, backs off for a configurable period
-- **Wireless-specific detection** — Subscribes to `Video.Input.AirPlay.Activity` and `Video.Input.Miracast.Status/Transport` to only act when wireless sharing is actually active
-- **Graceful reboot recovery** — Retries xAPI subscriptions for nodes that aren't available immediately after a device restart (v0.9+)
-- **MTR compatible** — Works on devices running Microsoft Teams Rooms mode
+The macro is designed for environments where false positives are worse than false negatives, so every action includes a confirmation step, a suppression window, or a guardrail that prevents interference with active use.
+
+- **Dual occupancy signals**: Use PeoplePresence, PeopleCount, or both ("Either" mode) to detect empty rooms
+- **User prompt before disconnect**: OSD alert with Room Navigator support; never silently kills a share while someone is presenting
+- **Call guardrail**: Takes no action while `SystemUnit.State.System` is `InCall`
+- **Suppression window**: After a user confirms presence, backs off for a configurable period
+- **Wireless-specific detection**: Subscribes to `Video.Input.AirPlay.Activity` and `Video.Input.Miracast.Status/Transport` to only act when wireless sharing is actually active
+- **Graceful reboot recovery**: Retries xAPI subscriptions for nodes that aren't available immediately after a device restart (v0.9+)
+- **MTR compatible**: Works on devices running Microsoft Teams Rooms mode
 
 ## Configuration
 
